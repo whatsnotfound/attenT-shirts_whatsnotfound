@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>attenT-shirts | Stand with Jane Doe</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #121210;
+      color: #F5F5F7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 16px 12px 40px 12px;
+    }
+
+    .page-container {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #333330;
+      margin: 20px 0;
+    }
+
+    /* 1. HERO HEADER */
+    .hero-header {
+      color: #FFD100;
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+
+    .sub-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .sub-header-title {
+      font-size: 30px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 0.5px;
+    }
+
+    .sub-header-caption {
+      font-size: 11px;
+      color: #A1A1A6;
+      text-align: right;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    /* 메인 사진 1 (블라인드 텍스트) */
+    .main-visual-box {
+      width: 100%;
+      background-color: #1A1A1C;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .main-visual-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .section-header {
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      color: #FFD100;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 14px;
+      border-left: 3px solid #FFD100;
+      padding-left: 8px;
+    }
+
+    /* 2. INCIDENT SUMMARY & COUNTER CARD */
+    .summary-card {
+      background-color: #1A1A1C;
+      border: 1px solid #FFD100;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      margin-bottom: 24px;
+    }
+
+    .summary-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .summary-badge-title {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: #8E8E93;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .ongoing-badge {
+      background-color: rgba(255, 209, 0, 0.15);
+      color: #FFD100;
+      border: 1px solid #FFD100;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .summary-text {
+      font-size: 13px;
+      color: #D1D1D6;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .counter-inner-box {
+      background-color: #121214;
+      border: 1px solid #2C2C2E;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .solidarity-btn {
+      width: 100%;
+      background-color: #FFD100;
+      color: #121212;
+      border: 1px solid #FFD100;
+      border-radius: 8px;
+      padding: 12px 0;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
+      text-align: center;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 3. INVESTIGATIVE PRESS ARCHIVE CARDS */
+    .news-card {
+      display: block;
+      background-color: #1A1A1C;
+      border: 1px solid #FFD100;
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 14px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .news-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .news-press-yellow { color: #FFD100; font-weight: 700; }
+    .news-press-red { color: #FF4E45; font-weight: 700; }
+    .news-date { color: #8E8E93; }
+
+    .news-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .news-snippet {
+      font-size: 12px;
+      color: #A1A1A6;
+      line-height: 1.5;
+    }
+
+    .news-link-btn {
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* 4. 마키 애니메이션 */
+    .marquee-container {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+      margin: 16px 0;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 18s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .brand-title {
+      text-align: center;
+      font-size: 13px;
+      color: #E5E5EA;
+      margin: 14px 0;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .product-main-img {
+      width: 100%;
+      background-color: #1A1A1C;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .product-main-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .product-sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .product-sub-img {
+      width: 100%;
+      background-color: #1A1A1C;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .product-sub-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 5. INSTAGRAM BUTTON FOOTER */
+    .footer-section {
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    .insta-capsule-btn {
+      display: block;
+      width: 100%;
+      background-color: #1A1A1C;
+      border: 1px solid #FFD100;
+      border-radius: 40px;
+      padding: 14px 0;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.2s ease;
+    }
+
+    .insta-capsule-btn:active, .insta-capsule-btn:hover {
+      background-color: #242426;
+      border-color: #FFE033;
+    }
+
+    .insta-btn-text {
+      color: #FFD100;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+
+    .footer-sub-text {
+      font-size: 11px;
+      color: #8E8E93;
+      font-weight: 600;
+      margin-top: 14px;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-container">
+  
+  <hr>
+
+  <div class="hero-header">
+    JUSTICE FOR<br>JANE DOE
+  </div>
+
+  <div class="sub-header-row">
+    <div class="sub-header-title">CORNELL</div>
+    <div class="sub-header-caption">
+      NOT 7/57<br>IT IS<br>57/57 &gt;
+    </div>
+  </div>
+
+  <!-- [사진 1] 메인 블라인드 텍스트 이미지 -->
+  <div class="main-visual-box">
+    <img src="site.main.png" alt="Main Visual Text">
+  </div>
+
+  <div class="section-header">STAND WITH US</div>
+
+  <div class="summary-card">
+    <div class="summary-badge-row">
+      <span class="summary-badge-title">INCIDENT SUMMARY</span>
+      <span class="ongoing-badge">Ongoing</span>
+    </div>
+    <p class="summary-text">
+      This archive serves to track structural injustices and amplify voices that mainstream media left behind. We remember, document, and stand with victims until full truth and justice are served.
+    </p>
+    
+    <div class="counter-inner-box">
+      <div>
+        <div style="font-size: 11px; color: #8E8E93; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; margin-bottom: 4px;">Total Supporters</div>
+        <div style="font-size: 15px; font-weight: 700; color: #FFFFFF; line-height: 1.2;">
+          <span id="supporter-count" style="color: #FFD100; font-size: 18px; margin-right: 3px;">0</span> supporters standing
+        </div>
+      </div>
+
+      <button id="solidarity-btn" class="solidarity-btn" type="button">
+        Stand with Jane Doe
+      </button>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2 style="color: #FFD100; font-size: 18px; font-weight: 800; margin: 20px 0 16px 0; line-height: 1.3;">
+    ABOUT CORNELL INCIDENTS, JANE DOE
+  </h2>
+
+  <div class="section-header">INVESTIGATIVE PRESS ARCHIVE</div>
+
+  <a href="https://www.cornellsun.com/article/2026/09/tccsuykuvb4z" target="_blank" class="news-card">
+    <div class="news-meta">
+      <span class="news-press-yellow">The Cornell Daily Sun</span>
+      <span class="news-date">2026.09.18</span>
+    </div>
+    <div class="news-title">Cornell, Chi Phi Sued by victim of Alleged Gang Rape, Drugging in 2024</div>
+    <div class="news-snippet">The first report on the lawsuit filed by Jane Doe against Cornell and seven men over an alleged 2024 assault.</div>
+    <div class="news-link-btn" style="color: #FFD100;">Read Article ↗</div>
+  </a>
+
+  <a href="https://www.foxnews.com/us/cornell-rape-accuser-remain-jane-doe-judge-warns-threats-could-lead-federal-charges" target="_blank" class="news-card">
+    <div class="news-meta">
+      <span class="news-press-yellow">FOX News</span>
+      <span class="news-date">2026.10.24</span>
+    </div>
+    <div class="news-title">Cornell rape accuser can remain 'Jane Doe'; judge warns threats could lead to federal charges</div>
+    <div class="news-snippet">A judge rules Jane Doe can stay anonymous, and warns against threats toward anyone in the case.</div>
+    <div class="news-link-btn" style="color: #FFD100;">Read Article ↗</div>
+  </a>
+
+  <a href="https://abcnews.com/US/timeline-alleged-cornell-university-fraternity-house-rape-investigation/story?id=136884431" target="_blank" class="news-card">
+    <div class="news-meta">
+      <span class="news-press-yellow">ABC News</span>
+      <span class="news-date">2026.10.02</span>
+    </div>
+    <div class="news-title">Timeline of alleged Cornell University fraternity house rape investigation</div>
+    <div class="news-snippet">A timeline of the Cornell case, from the 2024 police report to the reopened investigation.</div>
+    <div class="news-link-btn" style="color: #FFD100;">Read Article ↗</div>
+  </a>
+
+  <a href="https://www.youtube.com/watch?v=TleYqlf-vK8" target="_blank" class="news-card">
+    <div class="news-meta">
+      <span class="news-press-red">YouTube • BBC News</span>
+      <span class="news-date">2026.09.29</span>
+    </div>
+    <div class="news-title">Breaking News: Case of alleged gang rape at Cornell University in US reopened | BBC News</div>
+    <div class="news-snippet">A video report on the reopened criminal inquiry into the alleged Cornell gang rape.</div>
+    <div class="news-link-btn" style="color: #FF4E45;">Watch Video ↗</div>
+  </a>
+
+  <!-- [위치 이동 완료] 기사 아카이브 바로 다음에 오는 프로젝트 블루프린트 타임라인 -->
+  <div style="margin: 24px 0; background-color: #1A1A1C; border: 1px solid #333330; border-radius: 12px; padding: 18px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+      <span style="font-size: 12px; letter-spacing: 1.5px; color: #FFD100; text-transform: uppercase; font-weight: 700;">
+        PROJECT BLUEPRINT & FLOW
+      </span>
+      <span style="font-size: 10px; color: #8E8E93; text-transform: uppercase; font-weight: 600;">
+        Framework
+      </span>
+    </div>
+
+    <div style="position: relative; padding-left: 16px; border-left: 1px dashed #3A3A3C; margin-left: 4px;">
+      
+      <!-- 1단계 -->
+      <div style="position: relative; margin-bottom: 20px;">
+        <div style="position: absolute; left: -21px; top: 3px; width: 7px; height: 7px; background-color: #FFD100; border-radius: 50%;"></div>
+        <div style="font-size: 10px; color: #FFD100; font-weight: 700; margin-bottom: 2px;">PHASE 01 • INITIATION</div>
+        <div style="font-size: 13px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">attenT-shirts Episode 01 Framework</div>
+        <div style="font-size: 11px; color: #A1A1A6; line-height: 1.4;">A street-fashion media initiative designed to illuminate Jane Doe and bring forgotten social narratives back into public discussion.</div>
+      </div>
+
+      <!-- 2단계 -->
+      <div style="position: relative; margin-bottom: 20px;">
+        <div style="position: absolute; left: -21px; top: 3px; width: 5px; height: 5px; background-color: #636366; border-radius: 50%;"></div>
+        <div style="font-size: 10px; color: #8E8E93; font-weight: 600; margin-bottom: 2px;">PHASE 02 • ARCHIVAL INTEGRATION</div>
+        <div style="font-size: 13px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Investigative Journalism Archival Structure</div>
+        <div style="font-size: 11px; color: #A1A1A6; line-height: 1.4;">A framework to connect real-time follow-up press releases and truth-seeking investigative report databases directly to the garments.</div>
+      </div>
+
+      <!-- 3단계 -->
+      <div style="position: relative;">
+        <div style="position: absolute; left: -21px; top: 3px; width: 5px; height: 5px; background-color: #636366; border-radius: 50%;"></div>
+        <div style="font-size: 10px; color: #8E8E93; font-weight: 600; margin-bottom: 2px;">PHASE 03 • SOCIAL IMPACT ALLOCATION</div>
+        <div style="font-size: 13px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;">Support Fund Allocation for Women’s Crisis Centers</div>
+        <div style="font-size: 11px; color: #A1A1A6; line-height: 1.4;">All projected proceeds are planned to be directed toward organizations providing essential legal assistance and psychological care for victims.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- [상단 마키] attenT-shirts -->
+  <div class="marquee-container" style="color: #8E8E93;">
+    <div class="marquee-content">
+      attenT-shrits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; attenT-shrits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  </div>
+
+  <div class="brand-title">attenT-shrits</div>
+
+  <!-- [사진 2] 맨투맨 제품 메인 컷 (shirt.png 파일과 연동) -->
+  <div class="product-main-img">
+    <img src="Gemini_attenT-shirts_1.1.png" alt="attenT-shirt Product Main">
+  </div>
+
+  <!-- [사진 3 & 4] 모델 착용컷 2개 (look1.png, look2.png 파일과 연동) -->
+  <div class="product-sub-grid">
+    <div class="product-sub-img">
+      <img src="Gemini_attenT-shirts modlefront_1.11.png" alt="Lookbook Shot 1">
+    </div>
+    <div class="product-sub-img">
+      <img src="Gemini_attenT-shirts modleleft_1.11.png" alt="Lookbook Shot 2">
+    </div>
+  </div>
+
+  <!-- [하단 마키] WEAR THE UNSEEN STORY -->
+  <div class="marquee-container" style="color: #FFFFFF;">
+    <div class="marquee-content">
+      WEAR THE UNSEEN STORY. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WEAR THE UNSEEN STORY. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="footer-section">
+    <a href="https://www.instagram.com/whatsnotfound/" target="_blank" class="insta-capsule-btn">
+      <span class="insta-btn-text">📷 INSTAGRAM @WHATSNOTFOUND</span>
+    </a>
+    <div class="footer-sub-text">
+      WHATSNOTFOUND_1 &bull; attenT-shirts Campaign
+    </div>
+    <div class="footer-sub-text">
+      This website and its products are a personal creative project by whatsnotfound and do not exist in reality.
+    </div>
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    const STORAGE_KEY = 'attent_shirts_standing_status_v7';
+    const COUNT_KEY = 'attent_shirts_supporter_count_v7';
+    
+    const btn = document.getElementById('solidarity-btn');
+    const countDisplay = document.getElementById('supporter-count');
+
+    if (!btn || !countDisplay) return;
+
+    let savedCount = localStorage.getItem(COUNT_KEY);
+    if (savedCount === null) {
+      savedCount = 0;
+      localStorage.setItem(COUNT_KEY, savedCount);
+    }
+    countDisplay.innerText = Number(savedCount).toLocaleString();
+
+    if (localStorage.getItem(STORAGE_KEY) === 'true') {
+      applyCompletedStyle(btn);
+    }
+
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      if (localStorage.getItem(STORAGE_KEY) === 'true') return;
+
+      let currentCount = parseInt(localStorage.getItem(COUNT_KEY) || 0);
+      currentCount += 1;
+      
+      localStorage.setItem(COUNT_KEY, currentCount);
+      localStorage.setItem(STORAGE_KEY, 'true');
+
+      countDisplay.innerText = currentCount.toLocaleString();
+      applyCompletedStyle(btn);
+    });
+
+    function applyCompletedStyle(buttonElement) {
+      buttonElement.innerText = '✓ Standing with Jane Doe';
+      buttonElement.style.backgroundColor = '#2C2C2E';
+      buttonElement.style.color = '#FFD100';
+      buttonElement.style.cursor = 'default';
+      buttonElement.style.border = '1px solid #FFD100';
+    }
+  })();
+</script>
+
+</body>
+</html>
